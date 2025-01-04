@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>মেট্রো টিকিট</title>
+    <style>
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        header {
+            background-color: #004d00;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+        .container {
+            max-width: 400px;
+            margin: 20px auto;
+            background: #ffffff;
+            color: #000;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        input, select, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        button {
+            background-color: #004d00;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #003300;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #004d00;
+            padding: 0.5rem;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>মেট্রো টিকিট</h1>
+    </header>
+    <nav class="nav">
+        <a href="#home">হোম</a>
+        <a href="#login">লগ ইন</a>
+        <a href="#register">নিবন্ধন</a>
+    </nav>
+
+    <div class="container" id="home">
+        <h1>স্বাগতম!</h1>
+        <p>মেট্রো টিকিট বুক করার জন্য লগ ইন করুন।</p>
+        <button onclick="showSection('login')">লগ ইন</button>
+    </div>
+
+    <div class="container" id="login" style="display:none;">
+        <h1>লগ ইন</h1>
+        <form onsubmit="event.preventDefault(); showSection('travel-details');">
+            <label for="email">ই-মেইল</label>
+            <input type="email" id="email" name="email" placeholder="ই-মেইল লিখুন" required>
+
+            <label for="password">পাসওয়ার্ড</label>
+            <input type="password" id="password" name="password" placeholder="পাসওয়ার্ড লিখুন" required>
+
+            <button type="submit">লগ ইন</button>
+        </form>
+    </div>
+
+    <div class="container" id="register" style="display:none;">
+        <h1>নিবন্ধন</h1>
+        <form>
+            <label for="name">নাম</label>
+            <input type="text" id="name" name="name" placeholder="আপনার নাম" required>
+
+            <label for="phone">ফোন নম্বর</label>
+            <input type="tel" id="phone" name="phone" placeholder="ফোন নম্বর লিখুন" required>
+
+            <label for="password">পাসওয়ার্ড</label>
+            <input type="password" id="password" name="password" placeholder="পাসওয়ার্ড লিখুন" required>
+
+            <label for="confirm-password">পাসওয়ার্ড নিশ্চিত করুন</label>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="পাসওয়ার্ড পুনরায় লিখুন" required>
+
+            <button type="submit">নিবন্ধন করুন</button>
+        </form>
+    </div>
+
+    <div class="container" id="forgot-password" style="display:none;">
+        <h1>পাসওয়ার্ড ভুলে গেছেন?</h1>
+        <form>
+            <label for="reset-email">ই-মেইল</label>
+            <input type="email" id="reset-email" name="reset-email" placeholder="ই-মেইল লিখুন" required>
+
+            <button type="submit" onclick="showSection('login')">সাবমিট</button>
+        </form>
+    </div>
+
+    <div class="container" id="travel-details" style="display:none;">
+        <h1>যাত্রা পথ</h1>
+        <form onsubmit="event.preventDefault(); showSection('payment');">
+            <label for="from">যেখান থেকে</label>
+            <input type="text" id="from" name="from" placeholder="যাত্রা শুরু" required>
+
+            <label for="to">যেখানে যাবেন</label>
+            <input type="text" id="to" name="to" placeholder="গন্তব্য" required>
+
+            <label for="date">তারিখ</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">সময়</label>
+            <input type="time" id="time" name="time" required>
+
+            <button type="submit">নিশ্চিত করুন</button>
+        </form>
+    </div>
+
+    <div class="container" id="payment" style="display:none;">
+        <h1>পেমেন্ট</h1>
+        <form>
+            <label for="amount">পরিমাণ</label>
+            <input type="number" id="amount" name="amount" placeholder="টাকা" required>
+
+            <h2>পেমেন্ট মাধ্যম</h2>
+            <button type="button">বিকাশ</button>
+            <button type="button">নগদ</button>
+            <button type="button">ভিসা</button>
+            <button type="button">মাস্টারকার্ড</button>
+
+            <button type="submit">নিশ্চিত করুন</button>
+        </form>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.container').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+    </script>
+</body>
+</html>
